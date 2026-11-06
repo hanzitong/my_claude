@@ -1,0 +1,17 @@
+- [Claude 設定の置き場所](project-config-in-project-dir.md) — ROBO_NEXT だけの決まりは ~/ROBO_NEXT/.claude/。ADR 駆動やロボット開発に使える汎用のものは ~/.claude/（2026-11-04）
+- [頼まれていない追加をしない](no-unrequested-convenience-additions.md) — 最小構成で作り、便利機能は提案にとどめる
+- [robo_system の情報の書き先](keep-system-description-updated.md) — specifications/ の4文書（基本・詳細の仕様書と設計書）と ADR に書き分ける。古い情報は残さない
+- [古い記述は見つけ次第直す](fix-stale-info-when-found.md) — 文書・ADR・コメントの古い/誤った記述はその場で直して報告。判断できない食い違いと試験の記録は除く（2026-11-04）
+- [仕様書の置き場所](system-specifications-location.md) — システムの仕様書は robo_system/specifications/ にユーザーが書く
+- [robo_system のコードは外観だけ](robo-system-code-outline-only.md) — 関数とスレッド処理の骨組みまで。詳細実装には進まない
+- [基礎関数の正のファイルと、並行するセッション](robo-system-primitives-file-and-parallel-sessions.md) — robot_primitives.py と speaker_primitives.py（機器ごと、ADR-0020）が正。別のセッションも更新するので、作業の前に現状を読み直す
+- [robo_system の動かし方](robo-system-run-environment.md) — asr → tts → robo_system の順に up。音声の試験は null-sink の仮想マイク。ロード約7分
+- [コードを変更しない](do-not-modify-code.md) — 2026-10-13 以降、ROBO_NEXT のコードは読む・解説する・提案するまで
+- [robo_system のコードの在りか](robo-system-code-location-branch.md) — feat/system-design にだけコミット。統合ブランチには未コミットで展開しただけ（2026-10-15）
+- [日本語の返答と文書の書き方](japanese-reply-style.md) — 返答にも文書にも当てはめる。論理的に誤解なく。動詞には動作主と修飾語（どこに、何を）を付ける。説明の前に必ず前提を整理して伝える
+- [言語の使い分け](language-japanese-replies-english-code.md) — 返答と ADR・文書は日本語、コードの中は英語
+- [文書は話題ごとにファイルを分ける](split-files-by-topic.md) — 理由なく1つにまとめない。既存の分け方（言語ごと等）に合わせ、共通部分だけまとめる
+- [名前は一語を避け、性質や目的を表す](descriptive-names-per-language.md) — よい単語は残して「何の」を足す。略語なし。レビューでも確かめる。ルールは言語ごと
+- [Python は python-coding スキルに従う](python-coding-priorities.md) — 命名は厳しく、型ヒント必須、全関数・クラスに「目的」を書いた docstring
+- [robo_system が主、vlm_test はサブ](robo-system-is-main-vlm-test-is-sub.md) — 共通のコード（vlm_strategy.py など）は robo_system に集約し、vlm_test が import する。写しは作らない（2026-11-04）
+- [ユーザーのフックは動かない](managed-settings-block-user-hooks.md) — 社内の管理設定でユーザーのフックと権限ルールが無効。代わりにスキル adr-lint、adr-context、code-edit-check を使う。hooks/ を直すには /add-dir が要る

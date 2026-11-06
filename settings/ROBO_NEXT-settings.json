@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /home/nachi_ai/ROBO_NEXT/.claude/hooks/code_edit_guard.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
